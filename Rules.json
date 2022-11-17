@@ -1,0 +1,111 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cavi-au/Consent-O-Matic/master/rules.schema.json",
+  "ABOUT YOU": {
+    "detectors": [
+      {
+        "presentMatcher": [
+          {
+            "type": "css",
+            "target": {
+              "selector": "#onetrust-consent-sdk"
+            }
+          }
+        ],
+        "showingMatcher": [
+          {
+            "type": "css",
+            "target": {
+              "selector": "#onetrust-consent-sdk",
+              "displayFilter": true
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "action": {
+          "type": "hide",
+          "target": {
+            "selector": "#onetrust-consent-sdk"
+          }
+        },
+        "name": "HIDE_CMP"
+      },
+      {
+        "name": "OPEN_OPTIONS"
+      },
+      {
+        "action": {
+          "type": "consent",
+          "consents": [
+            {
+              "matcher": {
+                "type": "css",
+                "target": {
+                  "selector": "#ot-group-id-BG817-toggle"
+                },
+                "parent": {
+                  "selector": "[data-optanongroupid=\"BG817\"]"
+                }
+              },
+              "toggleAction": {
+                "type": "click",
+                "target": {
+                  "selector": "#ot-group-id-BG817-toggle"
+                },
+                "parent": {
+                  "selector": "[data-optanongroupid=\"BG817\"]"
+                }
+              },
+              "type": "A"
+            },
+            {
+              "matcher": {
+                "type": "checkbox",
+                "target": {
+                  "selector": "#ot-group-id-C0002"
+                }
+              },
+              "toggleAction": {
+                "type": "click",
+                "target": {
+                  "selector": "#ot-group-id-C0002"
+                }
+              },
+              "type": "B"
+            },
+            {
+              "matcher": {
+                "type": "checkbox",
+                "target": {
+                  "selector": "#ot-group-id-C0004"
+                }
+              },
+              "toggleAction": {
+                "type": "click",
+                "target": {
+                  "selector": "#ot-group-id-C0004"
+                }
+              },
+              "type": "F"
+            }
+          ]
+        },
+        "name": "DO_CONSENT"
+      },
+      {
+        "action": {
+          "type": "click",
+          "target": {
+            "selector": "#confirm-choices-handler"
+          }
+        },
+        "name": "SAVE_CONSENT"
+      },
+      {
+        "name": "UTILITY"
+      }
+    ]
+  }
+}
